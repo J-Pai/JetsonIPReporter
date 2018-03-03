@@ -45,9 +45,22 @@ Wherever you want to obtain the the Jetson's IP address, simply clone your remot
 
 Obtain IP Address and Upload to remote repository:
 ```bash
-./upload.ssh
+./upload_ip.sh
 ```
 Decrypt curr_up_enc.txt:
 ```bash
 ./decryptor.sh $LOCATION_OF_JETSON_IP_REPORTER_KEY_PEM
 ```
+If you are fine with uploading the IP address in it's unencrypted format, simply attach a no-encrypt flag when running the upload_ip.sh script.
+```bash
+./upload_ip.sh no-encrypt
+```
+By default, the scripts looks at the wlan0 NIC for the ip address. You can set the NIC to eth0 by attaching the eth0 flag to the end of the command.
+```bash
+./upload_ip.sh eth0
+```
+Both flags can be combined for combined effects.
+```bash
+./upload_ip.sh no-encrypt eth0
+```
+Top command uses eth0 for its IP address and does not encrypt the IP address.
