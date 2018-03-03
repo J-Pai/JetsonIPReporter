@@ -6,6 +6,8 @@ INTERFACE="wlan0"
 IP_ENC_FILE="curr_ip_enc.txt"
 IP_NOENC_FILE="curr_ip.txt"
 
+cd "$(dirname "$0")"
+
 for var in "$@"; do
   if [ $var = "no-encrypt" ]; then
     encrypt=false

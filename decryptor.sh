@@ -5,7 +5,9 @@ IP_NOENC_FILE="curr_ip.txt"
 
 cd "$(dirname "$0")"
 
-git pull
+git pull origin master
+
+echo $(pwd)
 
 if [ -f $IP_INC_FILE ]; then
   if [ $# -gt 0 ]; then
