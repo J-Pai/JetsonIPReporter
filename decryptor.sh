@@ -7,7 +7,7 @@ key=$(realpath $1)
 
 cd "$(dirname "$0")"
 
-git pull origin master
+git pull origin master > /dev/null 2>&1
 
 if [ -f $IP_INC_FILE ]; then
   if [ $# -gt 0 ]; then

@@ -3,11 +3,14 @@ This repository contains code that can be used to locate and upload the wlan0 or
 
 Note: The directory keys and its contents are NOT committed alongside any changes made to the repository. You will need to move the file jetson_ip_reporter_key.pem to any locations where you would like to decrypt the curr_up_enc.txt file.
 
+The upload_ip.sh script is meant to be executed on startup of the Jetson TX2 and allows users to quickly upload the Jetson's IP address (for ssh or other remote connections) somewhere on the internet for easier access. This is designed to allow users to take advantage of free services like GitHub.
+
 ## Requirements and Setup
 ### Requirements
 * Ubuntu 16.04
 * bash 
 * git
+
 ### Setup
 First clone this repostory and enter the repository.
 ```bash
@@ -36,8 +39,9 @@ Test if you have push access to the repository using the following command:
 ssh -T git@<HOST OF REMOTE GIT REPO>
 ```
 From here, the script should be able to commit the curr_ip_enc.txt document to the remote repostiory of your choice.
+
 ## Usage
-If you want 
+Wherever you want to obtain the the Jetson's IP address, simply clone your remote repository to another machine and copy the private key file jetson_ip_reporter_key.pem (stored in the generated directory keys) to your current system.
 
 Obtain IP Address and Upload to remote repository:
 ```bash
