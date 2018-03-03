@@ -26,10 +26,17 @@ Change the origin repository to use that new remote repository. Make sure to use
 git remote set-url origin git@github.com:J-Pai/JetsonIPReporter.git
 ```
 Next, make sure to update your ssh config file (typically located at ~/.ssh/config) and add the following lines:
-```
+```bash
 host <HOST OF REMOTE GIT REPO> 
   HostName <HOSTNAME OF REMOTE GIT REPO>
   IdentityFile <LOCATE OF SSH PRIVATE KEY>
+  User git
+```
+An exampe:
+```bash
+host github.com
+  HostName github.com
+  IdentityFile ~/.ssh/key
   User git
 ```
 NOTE: Usually, the service you are using will have instructions on how to set this up.
