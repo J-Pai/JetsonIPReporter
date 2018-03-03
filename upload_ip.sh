@@ -41,3 +41,6 @@ else
   echo $jetson_ip > $IP_NOENC_FILE
 fi
 
+git add --all
+git commit -m "Updated Jetson IP Address"
+git push origin master
