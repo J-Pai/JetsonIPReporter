@@ -63,4 +63,4 @@ Both flags can be combined for combined effects.
 ```bash
 ./upload_ip.sh no-encrypt eth0
 ```
-Top command uses eth0 for its IP address and does not encrypt the IP address.
+Top command uses eth0 for its IP address and does not encrypt the IP address
