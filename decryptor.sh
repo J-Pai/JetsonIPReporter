@@ -9,7 +9,7 @@ else
   if [ -f $IP_NOENC_FILE ]; then
     cd "$(dirname "$0")"
     cat $IP_NOENC_FILE
-    exit
+    exit 0
   fi
 fi
 
