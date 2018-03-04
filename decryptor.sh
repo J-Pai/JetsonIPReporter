@@ -30,3 +30,5 @@ if [ -f $IP_INC_FILE ]; then
     echo "Must provide jetson_ip_reporter_key.pem file location."
   fi
 fi
+
+exit 0

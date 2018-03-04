@@ -46,3 +46,5 @@ fi
 git add --all
 git commit -m "Updated Jetson IP Address"
 git push origin master
+
+exit 0
