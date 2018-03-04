@@ -74,10 +74,11 @@ Top command uses eth0 for its IP address and does not encrypt the IP address
 
 ## Setting up Startup Autorun
 1. Open up /etc/rc.local with a text editor (make sure to use sudo).
-2. Add before the line `exit 0` the following line:
+2. Add before the line `exit 0` the following line: 
 ```bash
 su nvidia /path/to/repo/upload_ip_auto >> /tmp/jetson.log
-```
+``` 
 NOTE: The upload_ip_auto checks runs a while loop that checks GitHub. Make sure to change that to the remote repo that you are using.
+
 3. Save the file
 4. Reboot
