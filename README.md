@@ -8,7 +8,7 @@ The upload_ip.sh script is meant to be executed on startup of the Jetson TX2 and
 ## Requirements and Setup
 ### Requirements
 * Ubuntu 16.04
-* bash 
+* bash
 * git
 
 ### Setup
@@ -17,7 +17,7 @@ First clone this repostory and enter the repository.
 git clone https://github.com/J-Pai/JetsonIPReporter.git
 cd JetsonIPReporter
 ```
-Then create a remote repository using your preferred service (GitHub, GitLab, Bitbucket). 
+Then create a remote repository using your preferred service (GitHub, GitLab, Bitbucket).
 
 NOTE: Make sure you are able to push to the repository using ssh keys. In order to allow this script to run without human intervention, an ssh key must be added in order to avoid username/password authentication. Google "GitHub SSH authentication" if you are not sure what this is.
 
@@ -27,7 +27,7 @@ git remote set-url origin git@github.com:J-Pai/JetsonIPReporter.git
 ```
 Next, make sure to update your ssh config file (typically located at ~/.ssh/config) and add the following lines:
 ```bash
-host <HOST OF REMOTE GIT REPO> 
+host <HOST OF REMOTE GIT REPO>
   HostName <HOSTNAME OF REMOTE GIT REPO>
   IdentityFile <LOCATE OF SSH PRIVATE KEY>
   User git
@@ -73,11 +73,11 @@ Both flags can be combined for combined effects.
 Top command uses eth0 for its IP address and does not encrypt the IP address
 
 ## Setting up Startup Autorun
-- Open up /etc/rc.local with a text editor (make sure to use sudo).
-- Add before the line `exit 0` the following line:
+1. Open up /etc/rc.local with a text editor (make sure to use sudo).
+2. Add before the line `exit 0` the following line:
 ```bash
-su nvidia /path/to/upload_repo/upload_ip.sh
+su nvidia /path/to/repo/upload_ip_auto
 ```
-NOTE: You may want to create a script that will check if the remote repository is accessible before calling the script in the repo.
-- Save the file
-- Reboot
+NOTE: The upload_ip_auto checks runs a while loop that checks GitHub. Make sure to change that to the remote repo that you are using.
+3. Save the file
+4. Reboot

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+URL=github.com
+
+(( count = 100 ))
+while [[ $count -ne 0 ]]; do
+  ping -c 1 $URL
+  rc=$?
+  if [[ $rc -eq 0 ]]; then
+    (( count = 1 ))
+  fi
+  (( count = count - 1 ))
+  sleep 1
+done
+
+if [[ $rc -eq 0 ]]; then
+  echo "GitHub is up"
+  cd "$(dirname "$0")"
+  /bin/bash upload_ip.sh
+  exit 0
+else
+  echo "GitHub is down"
+  exit 0
+fi
