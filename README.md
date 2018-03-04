@@ -71,3 +71,13 @@ Both flags can be combined for combined effects.
 ./upload_ip.sh no-encrypt eth0
 ```
 Top command uses eth0 for its IP address and does not encrypt the IP address
+
+## Setting up Startup Autorun
+- Open up /etc/rc.local with a text editor (make sure to use sudo).
+- Add before the line `exit 0` the following line:
+```bash
+su nvidia /path/to/upload_repo/upload_ip.sh
+```
+NOTE: You may want to create a script that will check if the remote repository is accessible before calling the script in the repo.
+- Save the file
+- Reboot
