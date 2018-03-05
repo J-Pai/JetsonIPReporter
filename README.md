@@ -83,7 +83,7 @@ Top command uses eth0 for its IP address and does not encrypt the IP address
 2. Add before the line `exit 0` the following lines:
 ```bash
 touch /tmp/upload_ip.log
-su nvidia /path/to/repo/upload_ip_auto > /tmp/upload_ip.log
+su nvidia /path/to/repo/upload_ip_auto >> /tmp/upload_ip.log
 ```
 NOTE: The upload_ip_auto checks runs a while loop that checks GitHub. Make sure to change that to the remote repo that you are using.
 
