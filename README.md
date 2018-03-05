@@ -80,12 +80,12 @@ Top command uses eth0 for its IP address and does not encrypt the IP address
 
 ## Setting up Startup Autorun
 1. Open up /etc/rc.local with a text editor (make sure to use sudo).
-2. Add before the line `exit 0` the following lines: 
+2. Add before the line `exit 0` the following lines:
 ```bash
 touch /tmp/upload_ip.log
-su nvidia /path/to/repo/upload_ip_auto > /tmp/upload_ip.log &
-``` 
-NOTE: The upload_ip_auto checks runs a while loop that checks GitHub. Make sure to change that to the remote repo that you are using. The & sign at the end of the second line pushes the script to the background. This should prevent the script from holding up the rest of the rc.local script if an internet connection is not obtained.
+su nvidia /path/to/repo/upload_ip_auto > /tmp/upload_ip.log
+```
+NOTE: The upload_ip_auto checks runs a while loop that checks GitHub. Make sure to change that to the remote repo that you are using.
 
 3. Save the file
 4. Reboot
