@@ -2,7 +2,6 @@
 encrypt=true
 KEY_FILE="./keys/jetson_ip_reporter_key.pem"
 PUB_KEY_FILE="./keys/pub_key.pem"
-INTERFACE="wlan0"
 IP_ENC_FILE="curr_ip_enc.txt"
 IP_NOENC_FILE="curr_ip.txt"
 
@@ -14,16 +13,12 @@ for var in "$@"; do
   if [ $var = "no-encrypt" ]; then
     encrypt=false
   fi
-  if [ $var = "wlan0" ]; then
-    INTERFACE="wlan0"
-  fi
-  if [ $var = "eth0" ]; then
-    INTERFACE="eth0"
-  fi
 done
 
-jetson_ip=$(ifconfig $INTERFACE | grep -Po 't addr:\K[\d.]+')
-echo "Jetson's IP $jetson_ip"
+jetson_wlan_ip=$(ifconfig wlan0 | grep -Po 't addr:\K[\d.]+')
+echo "Jetson's Wifi IP $jetson_wlan_ip"
+jetson_eth_ip=$(ifconfig eth0 | grep -Po 't addr:\K[\d.]+')
+echo "Jetson's Ethernet IP $jetson_eth_ip"
 
 if [ $encrypt = true ]; then
   echo "Will Encrypt"
@@ -37,12 +32,14 @@ if [ $encrypt = true ]; then
     openssl rsa -in $KEY_FILE -pubout -out $PUB_KEY_FILE
   fi
 
-  echo $jetson_ip > $IP_NOENC_FILE
+  echo "wlan0=$jetson_wlan_ip" >> $IP_NOENC_FILE
+  echo "eth0=$jetson_eth_ip" >> $IP_NOENC_FILE
   openssl rsautl -encrypt -inkey $PUB_KEY_FILE -pubin -in $IP_NOENC_FILE -out $IP_ENC_FILE
   rm $IP_NOENC_FILE
 else
   echo "Will not Encrypt"
-  echo $jetson_ip > $IP_NOENC_FILE
+  echo "wlan0=$jetson_wlan_ip" >> $IP_NOENC_FILE
+  echo "eth0=$jetson_eth_ip" >> $IP_NOENC_FILE
 fi
 
 git add --all
